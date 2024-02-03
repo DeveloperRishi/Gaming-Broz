@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Register | Gaming Broz</title> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+  </head>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+ 
+<!-- include firebase database -->
+<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>
+ 
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCPC_We5ekw7yYmlzpZFLZn9VqPnqyPXzc",
+  authDomain: "gaming-broz.firebaseapp.com",
+  databaseURL: "https://gaming-broz-default-rtdb.firebaseio.com",
+  projectId: "gaming-broz",
+  storageBucket: "gaming-broz.appspot.com",
+  messagingSenderId: "738164749344",
+  appId: "1:738164749344:web:ebeeff3831014f9f6db845"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+</script>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="title"><span>Register Gaming Broz</span></div>
+        <form action="#" id="myForm">
+          <div class="row">
+            <input type="text" placeholder="Email" id="email" required>
+          </div>
+          <div class="row">
+            <input type="text" placeholder="Password" id="password" required>
+          </div>
+          <div class="row button">
+            <input type="submit" value="Register now" onclick="sendMessage()">
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </body>
+  <script>
+    function sendMessage() {
+        // get message
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+ 
+        // save in database
+        firebase.database().ref("details").push().set({
+            "email": email,
+            "password": password
+        });
+ 
+        // prevent form from submitting
+        document.getElementById("myForm").reset();
+        return false;
+    }
+</script>
+</html>
